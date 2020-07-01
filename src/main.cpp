@@ -40,10 +40,7 @@ void setup()
    // Initialize the button.
    vButton.begin();
 
-   // Callback function to be called when the button is pressed.
-   vButton.onPressed(buttonPressed);
-
-   vButton.onPressedFor(5000, long_press_handler);
+   vButton.onPressedFor(3000, long_press_handler);
    // vButton.onSequence(2, 3000, double_click_handler);
 
    myservo.write(0); // tell servo to go to position in variable 'pos'
@@ -64,7 +61,7 @@ void loop()
    {
       digitalWrite(MOSFET_PIN, HIGH);
       delay(50);
-      myservo.write(90); // tell servo to go to position in variable 'pos'
+      myservo.write(33); // tell servo to go to position in variable 'pos'
       release_state = 2;
       release_start_time = millis();
       Serial.println("release start");
