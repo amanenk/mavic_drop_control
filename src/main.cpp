@@ -5,7 +5,7 @@ Servo myservo; // create servo object to control a servo
 #define SERVO_PIN 9
 #define MOSFET_PIN 8
 #define ANALOG_PIN A0
-#define LIGHT_TRESHOLD 100
+#define LIGHT_TRESHOLD 650
 // twelve servo objects can be created on most boards
 #define runEvery(t) for (static uint16_t _lasttime;                         \
                          (uint16_t)((uint16_t)millis() - _lasttime) >= (t); \
@@ -54,7 +54,12 @@ void loop()
    runEvery(20)
    {
       light_value = analogRead(ANALOG_PIN);
+      bool was_trigered = light_triggered;
       light_triggered = !(light_value >= LIGHT_TRESHOLD);
+      // if(!light_triggered){
+      //    Serial.print("light value ");
+      //    Serial.println(light_value);
+      // }
    }
 
    if (release_state == 1)
