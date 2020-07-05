@@ -40,7 +40,8 @@ void setup()
    // Initialize the button.
    vButton.begin();
 
-   vButton.onPressedFor(3000, long_press_handler);
+   // so ling time used because mavic turns on leds on start for 6 seconds
+   vButton.onPressedFor(9000, long_press_handler);
    // vButton.onSequence(2, 3000, double_click_handler);
 
    myservo.write(0); // tell servo to go to position in variable 'pos'
@@ -66,7 +67,7 @@ void loop()
    {
       digitalWrite(MOSFET_PIN, HIGH);
       delay(50);
-      myservo.write(33); // tell servo to go to position in variable 'pos'
+      myservo.write(40); // tell servo to go to position in variable 'pos'
       release_state = 2;
       release_start_time = millis();
       Serial.println("release start");
